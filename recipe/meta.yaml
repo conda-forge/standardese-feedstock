@@ -11,6 +11,8 @@ source:
   patches:
     - 0001-Actually-install-standardese-in-make-install.patch
     - 0002-boost-link-dynamic.patch
+    # upstream at https://github.com/foonathan/cppast/pull/104
+    - 0003-no-warn-as-error.patch
 
 build:
   number: 2
