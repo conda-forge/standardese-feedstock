@@ -11,9 +11,11 @@ source:
   patches:
     - 0001-Actually-install-standardese-in-make-install.patch
     - 0002-boost-link-dynamic.patch
+    # upstream at https://github.com/foonathan/cppast/pull/104
+    - 0003-no-warn-as-error.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win and vc<14]
   run_exports:
     # standardese uses semantic versioning
@@ -28,11 +30,14 @@ requirements:
     - clangdev
   run:
     - {{ pin_compatible('libclang') }}
+    - {{ pin_compatible('clangxx') }}
     - boost-cpp
 
 test:
+  files:
+    - sample.h
   commands:
-    - standardese --help
+    - standardese sample.h
 
 about:
   home: https://standardese.github.io/

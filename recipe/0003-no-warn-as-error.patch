@@ -1,0 +1,10 @@
+diff --git a/external/cppast/src/CMakeLists.txt b/external/cppast/src/CMakeLists.txt
+index a377ea4..16727fd 100644
+--- a/external/cppast/src/CMakeLists.txt
++++ b/external/cppast/src/CMakeLists.txt
+@@ -117,4 +117,4 @@ target_compile_options(cppast PRIVATE
+                            $<$<CXX_COMPILER_ID:GNU>: -Wno-noexcept-type>
+                            # MSVC warnings
+                            $<$<CXX_COMPILER_ID:MSVC>:
+-                           /WX /W4>)
++                           /W4>)
