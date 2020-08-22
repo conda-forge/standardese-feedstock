@@ -28,7 +28,7 @@ requirements:
     - clangdev >=10
   run:
     - {{ pin_compatible('libclang') }}
-    - {{ pin_compatible('clang++') }}
+    - {{ pin_compatible('clangxx') }}
     - boost-cpp
 
 test:
