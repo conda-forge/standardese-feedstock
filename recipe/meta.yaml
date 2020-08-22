@@ -28,11 +28,14 @@ requirements:
     - clangdev
   run:
     - {{ pin_compatible('libclang') }}
+    - {{ pin_compatible('clang++') }}
     - boost-cpp
 
 test:
+  files:
+    - sample.h
   commands:
-    - standardese --help
+    - standardese sample.h
 
 about:
   home: https://standardese.github.io/
