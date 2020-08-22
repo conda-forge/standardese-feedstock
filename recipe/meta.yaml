@@ -25,7 +25,7 @@ requirements:
     - cmake
   host:
     - boost-cpp
-    - clangdev >=10
+    - clangdev
   run:
     - {{ pin_compatible('libclang') }}
     - {{ pin_compatible('clangxx') }}
