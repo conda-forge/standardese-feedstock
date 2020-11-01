@@ -5,11 +5,13 @@ Home: https://standardese.github.io/
 
 Package license: MIT
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/standardese-feedstock/blob/master/LICENSE.txt)
 
 Summary: The nextgen Doxygen for C++
 
+Development: https://github.com/standardese/standardese
 
+Documentation: https://standardese.github.io/
 
 Current build status
 ====================
