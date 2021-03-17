@@ -9,6 +9,7 @@ cmake -G "NMake Makefiles" ^
       -DCMAKE_PREFIX_PATH:PATH="%LIBRARY_PREFIX%" ^
       -DCMAKE_BUILD_TYPE:STRING=Release ^
       -DBUILD_SHARED_LIBS:BOOL=OFF ^
+      -DSTANDARDESE_BUILD_TEST:BOOL=OFF ^
       -DCMAKE_LIBRARY_PATH:PATH="%LIBRARY_PREFIX%;%LIBRARY_PREFIX%/bin" ^
       ..
 if errorlevel 1 exit 1
