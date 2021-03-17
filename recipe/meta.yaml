@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/{{ name }}/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tgz
   sha256: b1a91ace8917180d3b3df0386eb1f0e0402b7409ab67002a55bb1f73e62b394a
+  patches:
+    - 0001-install-standardese-library-and-headers.patch
 
 build:
   number: 0
