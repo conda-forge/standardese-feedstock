@@ -1,0 +1,48 @@
+From ebbbaa722c92918de66c85071cdaf3d72d48a7e6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Thu, 18 Mar 2021 01:59:05 +0100
+Subject: [PATCH] fix compile error on windows
+
+---
+ include/standardese/markup/documentation.hpp        | 1 -
+ news/windows-function.rst                           | 3 +++
+ src/comment/command-extension/command_extension.hpp | 1 +
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 news/windows-function.rst
+
+diff --git a/include/standardese/markup/documentation.hpp b/include/standardese/markup/documentation.hpp
+index 4a46f31..f53fcc5 100644
+--- a/include/standardese/markup/documentation.hpp
++++ b/include/standardese/markup/documentation.hpp
+@@ -92,7 +92,6 @@ namespace markup
+             return {sections_.begin(), sections_.end()};
+         }
+ 
+-    protected:
+         documentation_entity(block_id id, type_safe::optional<documentation_header> h,
+                              std::unique_ptr<code_block> synopsis) // may be nullptr
+         : block_entity(std::move(id)), header_(std::move(h)), synopsis_(std::move(synopsis))
+diff --git a/news/windows-function.rst b/news/windows-function.rst
+new file mode 100644
+index 0000000..6a86c77
+--- /dev/null
++++ b/news/windows-function.rst
+@@ -0,0 +1,3 @@
++**Fixed:**
++
++* A compile error on some clang versions on Windows.
+diff --git a/src/comment/command-extension/command_extension.hpp b/src/comment/command-extension/command_extension.hpp
+index 6511369..0f29525 100644
+--- a/src/comment/command-extension/command_extension.hpp
++++ b/src/comment/command-extension/command_extension.hpp
+@@ -7,6 +7,7 @@
+ #define STANDARDESE_COMMENT_COMMAND_EXTENSION_COMMAND_EXTENSION_HPP_INCLUDED
+ 
+ #include <optional>
++#include <functional>
+ 
+ #include <cmark-gfm.h>
+ 
+-- 
+2.30.2
+
