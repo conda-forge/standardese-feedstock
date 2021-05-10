@@ -22,27 +22,3 @@ index 4a46f31..f53fcc5 100644
          documentation_entity(block_id id, type_safe::optional<documentation_header> h,
                               std::unique_ptr<code_block> synopsis) // may be nullptr
          : block_entity(std::move(id)), header_(std::move(h)), synopsis_(std::move(synopsis))
-diff --git a/news/windows-function.rst b/news/windows-function.rst
-new file mode 100644
-index 0000000..6a86c77
---- /dev/null
-+++ b/news/windows-function.rst
-@@ -0,0 +1,3 @@
-+**Fixed:**
-+
-+* A compile error on some clang versions on Windows.
-diff --git a/src/comment/command-extension/command_extension.hpp b/src/comment/command-extension/command_extension.hpp
-index 6511369..0f29525 100644
---- a/src/comment/command-extension/command_extension.hpp
-+++ b/src/comment/command-extension/command_extension.hpp
-@@ -7,6 +7,7 @@
- #define STANDARDESE_COMMENT_COMMAND_EXTENSION_COMMAND_EXTENSION_HPP_INCLUDED
- 
- #include <optional>
-+#include <functional>
- 
- #include <cmark-gfm.h>
- 
--- 
-2.30.2
-
