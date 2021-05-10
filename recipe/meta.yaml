@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/{{ name }}/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tgz
   sha256: 04a791479b9c881290bce2b4a2ce44e30f17e8c79ef6acc75c15b85ccfd54c12
+  patches:
+    - 0001-fix-compile-error-on-windows.patch 
 
 build:
   number: 0
@@ -15,8 +17,6 @@ build:
   run_exports:
     # standardese uses semantic versioning
     - {{ pin_subpackage("standardese") }}
-  patches:
-    - 0001-fix-compile-error-on-windows.patch 
 
 requirements:
   build:
