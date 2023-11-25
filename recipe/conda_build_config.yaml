@@ -1,0 +1,5 @@
+# build fails with newer compilers due to project
+# setting -Werror; try to remove upon new version
+cxx_compiler_version:   # [unix]
+  - 10                  # [linux]
+  - 14                  # [osx]
