@@ -15,6 +15,7 @@ source:
     - 0001-fix-compile-error-on-windows.patch
     - 0002-fix-build-with-newer-boost.patch
     - 0003-do-not-build-cppast-with-werror.patch
+    - 0004-Add-missing-import.patch
 
 build:
   number: 4
