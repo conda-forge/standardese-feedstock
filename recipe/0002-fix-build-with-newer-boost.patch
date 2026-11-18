@@ -1,0 +1,31 @@
+recursive_directory_iterator::no_push() was removed in Boost 1.85; use
+disable_recursion_pending() instead (available since Boost 1.48).
+
+Also stop requesting the Boost.System component: it has been header-only
+since 1.69 and its stub library was removed in 1.89.
+
+---
+diff -ru a/tool/CMakeLists.txt b/tool/CMakeLists.txt
+--- a/tool/CMakeLists.txt	2026-11-18 20:10:35.312261247 +0000
++++ b/tool/CMakeLists.txt	2026-11-18 20:10:35.314318242 +0000
+@@ -11,7 +11,7 @@
+ set_target_properties(standardese_tool PROPERTIES OUTPUT_NAME standardese CXX_STANDARD 17)
+ 
+ # link Boost
+-find_package(Boost COMPONENTS program_options filesystem system REQUIRED)
++find_package(Boost COMPONENTS program_options filesystem REQUIRED)
+ target_include_directories(standardese_tool PUBLIC ${Boost_INCLUDE_DIR})
+ target_link_libraries(standardese_tool PUBLIC ${Boost_LIBRARIES})
+ 
+diff -ru a/tool/filesystem.hpp b/tool/filesystem.hpp
+--- a/tool/filesystem.hpp	2026-11-18 20:10:35.312288187 +0000
++++ b/tool/filesystem.hpp	2026-11-18 20:10:35.315320022 +0000
+@@ -98,7 +98,7 @@
+             if (fs::is_directory(cur))
+             {
+                 if (!detail::is_valid(cur, relative, extensions, files, dirs, blacklist_dotfiles))
+-                    iter.no_push();
++                    iter.disable_recursion_pending();
+             }
+             else if (detail::is_valid(cur, relative, extensions, files, dirs, blacklist_dotfiles))
+             {
