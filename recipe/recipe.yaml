@@ -1,0 +1,55 @@
+schema_version: 1
+
+context:
+  name: standardese
+  version: "0.5.2"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/${{ name }}/${{ name }}/releases/download/${{ version }}/${{ name }}-${{ version }}.tgz
+  sha256: 04a791479b9c881290bce2b4a2ce44e30f17e8c79ef6acc75c15b85ccfd54c12
+  patches:
+    - 0001-fix-compile-error-on-windows.patch
+
+build:
+  number: 4
+  skip: win and vc<14
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib("c") }}
+    - cmake
+    - if: unix
+      then: make
+  host:
+    - libboost-devel
+    - clangdev
+  run:
+    - ${{ pin_compatible('libclang') }}
+    - ${{ pin_compatible('clangxx') }}
+  run_exports:
+    - ${{ pin_subpackage("standardese") }}
+
+tests:
+  - files:
+      recipe:
+        - sample.h
+    script:
+      - standardese sample.h
+
+about:
+  license: MIT
+  license_file: LICENSE
+  summary: The nextgen Doxygen for C++
+  homepage: https://standardese.github.io/
+  repository: https://github.com/standardese/standardese
+  documentation: https://standardese.github.io/
+
+extra:
+  recipe-maintainers:
+    - saraedum
+
