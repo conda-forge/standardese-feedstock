@@ -1,0 +1,20 @@
+Do not build cppast with -Werror / -pedantic-errors.
+
+Newer compilers emit new warnings in cppast, which fails the build. The
+warnings are still shown, they just no longer abort the build. This lets
+macOS use conda-forge's default compiler instead of the old clang 14, whose
+packages no longer bring in the libc++ headers.
+
+---
+diff -ru a/external/cppast/src/CMakeLists.txt b/external/cppast/src/CMakeLists.txt
+--- a/external/cppast/src/CMakeLists.txt	2026-11-18 20:41:54.064306160 +0000
++++ b/external/cppast/src/CMakeLists.txt	2026-11-18 20:41:54.067959361 +0000
+@@ -112,7 +112,7 @@
+ target_compile_options(cppast PRIVATE
+                            # clang/GCC warnings
+                            $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:
+-                           -pedantic-errors -Werror -Wall -Wextra -Wconversion -Wsign-conversion>
++                           -pedantic -Wall -Wextra -Wconversion -Wsign-conversion>
+                            # disable noexcept type warning on GCC
+                            $<$<CXX_COMPILER_ID:GNU>: -Wno-noexcept-type>
+                            # MSVC warnings
