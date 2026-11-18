@@ -1,0 +1,24 @@
+From 4af93c6bec263b0e328658ea4970663747a70e89 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Wed, 18 Nov 2026 16:34:53 -0600
+Subject: [PATCH] Add missing import
+
+---
+ src/comment/command-extension/command_extension.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/comment/command-extension/command_extension.cpp b/src/comment/command-extension/command_extension.cpp
+index cc6e306..32ccad5 100644
+--- a/src/comment/command-extension/command_extension.cpp
++++ b/src/comment/command-extension/command_extension.cpp
+@@ -8,6 +8,7 @@
+ 
+ #include <type_traits>
+ #include <cassert>
++#include <cstring>
+ 
+ #include <cmark-gfm.h>
+ #include <cmark-gfm-extension_api.h>
+-- 
+2.56.0
+
